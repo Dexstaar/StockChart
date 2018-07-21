@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -7,28 +7,40 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-  mode: 'development',
-  entry: [
-      './src/index.js'
-  ],
-  // output: {
-  //   path: 'dist',
-  //   filename: 'bundle.js',
-  //   publicPath: '/',
-  // },
+  entry: ["./src/index.js"],
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: "babel-loader"
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          // {
+          //   loader: "css-loader",
+          //   options: {
+          //     modules: true,
+          //     importLoaders: 1,
+          //     localIdentName: "[name]_[local]_[hash:base64]",
+          //     sourceMap: true,
+          //     minimize: true
+          //   }
+          // }
+        ]
       }
-    }]
+    ]
   },
-  plugins: [ htmlPlugin ],
+  plugins: [htmlPlugin],
   optimization: {},
   resolve: {
-    modules: ['node_modules'],
-    extensions: ['.js', '.json', '.jsx', '.css'],
-  },
+    modules: ["node_modules"],
+    extensions: [".js", ".json", ".jsx", ".css"]
+  }
 };
