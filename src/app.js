@@ -1,20 +1,37 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
+import { Route, Switch } from 'react-router-dom';
+
+import Header from "./layout/header";
+import Footer from "./layout/footer";
+import MainContainer from "./containers/MainContainer";
 
 export default class App extends Component {
+
   render() {
     return (
       <div>
-        Stock Chart !!
-        <Button variant="contained" color="primary">
-          {" "}
-          Material UI Button
-        </Button>
-        <StyledButton>Styled Com Button</StyledButton>
-        <StyledButtonExtendsMUI>Styled Button Based MUI</StyledButtonExtendsMUI>
+        <Header />
+          <Switch>
+            <Route exact path='/' component={MainContainer} />
+            <Route path='/:code' component={MainContainer} />
+          </Switch>
+        <Footer />
       </div>
     );
+
+    // return (
+    //   <div>
+    //     Stock Chart !!
+    //     <Button variant="contained" color="primary">
+    //       {" "}
+    //       Material UI Button
+    //     </Button>
+    //     <StyledButton>Styled Com Button</StyledButton>
+    //     <StyledButtonExtendsMUI>Styled Button Based MUI</StyledButtonExtendsMUI>
+    //   </div>
+    // );
   }
 }
 
