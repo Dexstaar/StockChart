@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
-const htmlPlugin = new HtmlWebPackPlugin({
+const htmlWebPackPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
   filename: "./index.html"
 });
@@ -29,16 +29,16 @@ module.exports = {
           {
             loader: "style-loader"
           },
-          // {
-          //   loader: "css-loader",
-          //   options: {
-          //     modules: true,
-          //     importLoaders: 1,
-          //     localIdentName: "[name]_[local]_[hash:base64]",
-          //     sourceMap: true,
-          //     minimize: true
-          //   }
-          // }
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[name]_[local]_[hash:base64]",
+              sourceMap: true,
+              minimize: true
+            }
+          }
         ]
       }
     ]
@@ -46,7 +46,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true
   },
-  plugins: [htmlPlugin],
+  plugins: [htmlWebPackPlugin],
   optimization: {},
   resolve: {
     modules: ["node_modules"],
