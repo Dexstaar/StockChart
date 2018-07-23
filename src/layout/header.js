@@ -6,15 +6,15 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 class Header extends Component {
   render() {
     return (
-      <PageHeader><h1>Stock Chart</h1></PageHeader>
+      <PageHeader><h1>a</h1></PageHeader>
     );
   }
 }
 
 const PageHeader = styled.div`
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #00bcd4;
   overflow: hidden;
-  background-color: #41B3A3;
+  background-color: #2c3e50;
   padding: 10px 10px;
   color: white;
 `;
