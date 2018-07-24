@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import Menu from "./layout/menu";
-import MainContainer from "./containers/MainContainer";
+import MainContainer from "./containers";
 
 export default class App extends Component {
   render() {
