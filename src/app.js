@@ -1,27 +1,23 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Route, Switch } from 'react-router-dom';
-// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import { Route, Switch } from "react-router-dom";
 
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import Menu from "./layout/menu";
 import MainContainer from "./containers/MainContainer";
 
-
-
 export default class App extends Component {
-
   render() {
     return (
       <div>
         <Header />
         <StyledMenu />
         <Switch>
-          <Route exact path='/' component={MainContainer} />
-          <Route path='/:code' component={MainContainer} />
+          <Route exact path="/" component={MainContainer} />
+          <Route path="/:code" component={MainContainer} />
         </Switch>
-        <StyledFooter/>
+        <StyledFooter />
       </div>
     );
   }

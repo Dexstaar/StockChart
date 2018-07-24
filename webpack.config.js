@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const path = require('path');
+const path = require("path");
 
 const htmlWebPackPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
@@ -10,9 +10,9 @@ const htmlWebPackPlugin = new HtmlWebPackPlugin({
 module.exports = {
   entry: ["./src/index.js"],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
-    publicPath: '/'
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -25,21 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: "[name]_[local]_[hash:base64]",
-              sourceMap: true,
-              minimize: true
-            }
-          }
-        ]
+        use: ["style-loader", "css-loader"]
       }
     ]
   },
