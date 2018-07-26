@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import { fetchData } from '../actions';
+import { fetchIntraday } from '../actions';
 
 class IntradayChart extends Component {
 
   componentWillMount() {
-    this.props.fetchData();
+    this.props.fetchIntraday('MSFT', '1min');
   }
 
   render() {
@@ -18,9 +18,21 @@ class IntradayChart extends Component {
         <div>
             Stock Code : {this.props.stockCode}
         </div>
+        <div>
+            Data : {this.props.IntradayData}
+        </div>
       </div>
     );
   }
 }
 
-export default connect(null, {fetchData})(IntradayChart);
+function mapStateToProps(state) {
+  const currentLanguage = state.language;
+  const languageLabels = getLanguageLabels(currentLanguage);
+
+  return {
+    IntradayData: state.intraDay.all,
+  };
+}
+
+export default connect(null, {fetchIntraday})(IntradayChart);
