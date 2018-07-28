@@ -10,7 +10,7 @@ import MainContainer from "./containers";
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <MainPlaceHolder>
         <Header />
         <StyledMenu />
         <Switch>
@@ -18,10 +18,14 @@ export default class App extends Component {
           <Route path="/:code" component={MainContainer} />
         </Switch>
         <StyledFooter />
-      </div>
+      </MainPlaceHolder>
     );
   }
 }
+
+const MainPlaceHolder = styled.div`
+  min-width: 1300px;
+`;
 
 const MenuPlaceHolder = styled.div`
   float: left;
@@ -34,3 +38,5 @@ const StyledMenu = styled(Menu)`
 const StyledFooter = styled(Footer)`
   clear: both;
 `;
+
+

@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from 'reactstrap';
 
-import IntradayChart from '../components/IntradayChart';
-
+import IntradayChart from '../containers/IntradayChartContainer';
 
 class MainContainer extends Component {
 
