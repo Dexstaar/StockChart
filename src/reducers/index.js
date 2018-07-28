@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import IntradayReducer from './reducer_intraday';
+import DailyReducer from './reducer_daily';
 
 const rootReducer = combineReducers({
-	intraDay: IntradayReducer
+	daily: DailyReducer
 });
 
 export default rootReducer;

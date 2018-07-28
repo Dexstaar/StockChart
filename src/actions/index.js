@@ -1,19 +1,18 @@
 import axios from 'axios';
 
-export const FETCH_INTRADAY = 'FETCH_INTRADAY';
+export const FETCH_DAILY = 'FETCH_DAILY';
 
 const url = 'https://www.alphavantage.co/query';
-const apiKey = 'demo';
-// const apiKey = '7KOGGEEMBWFT0JYP';
+// const apiKey = 'demo';
+const apiKey = '7KOGGEEMBWFT0JYP';
 
-export function fetchIntraday(stockCode, interval) {
-  console.log('fetchIntraday');
+export function fetchDaily(stockCode) {
+  console.log('fetchDaily | stockCode : ', stockCode);
 
   const requestParams = {
     params: {
-      function: 'TIME_SERIES_INTRADAY',
+      function: 'TIME_SERIES_DAILY',
       symbol: stockCode,
-      interval,
       apikey: apiKey,
     },
   };
@@ -25,7 +24,7 @@ export function fetchIntraday(stockCode, interval) {
       data,
     }) => {
       dispatch({
-        type: FETCH_INTRADAY,
+        type: FETCH_DAILY,
         payload: data,
       });
     });

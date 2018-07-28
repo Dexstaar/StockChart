@@ -2,7 +2,7 @@ import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 
 
-class IntradayChart extends Component {
+class DailyChart extends Component {
 
   renderBaseXY() {
     return (
@@ -38,25 +38,24 @@ class IntradayChart extends Component {
   }
 
   render() {
-    const {intradayData} = this.props;
-    const intradayDataLength = Object.keys(intradayData).length;
-    console.log('IntradayChart | intradayData :', this.props.intradayData);
-    console.log('IntradayChart | intradayDataLength :', intradayDataLength);
-    // console.log('IntradayChart | lines :', this.renderVerticalLines(intradayDataLength) );
+    const {dailyData} = this.props;
+    const dailyDataLength = Object.keys(dailyData).length;
+
+    // console.log('dailyDataLength : ', dailyDataLength);
 
     return (
       <div>
         <svg width="1100" height="550">
           {this.renderBaseXY()}
-          {this.renderVerticalLines(intradayDataLength)}
+          {this.renderVerticalLines(dailyDataLength)}
         </svg>
       </div>
     );
   }
 };
 
-IntradayChart.propTypes = {
-  intradayData: PropTypes.object.isRequired
+DailyChart.propTypes = {
+  dailyData: PropTypes.object.isRequired
 };
 
-export default IntradayChart;
+export default DailyChart;
