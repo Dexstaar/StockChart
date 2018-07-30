@@ -1,34 +1,21 @@
 import React, { Component, Fragment }  from 'react';
 import PropTypes from 'prop-types';
 
-
 class DailyChart extends Component {
 
   renderBaseXY() {
-    // const lines = [];
+    const lines = [];
+    let y = 0;
 
-    // lines.push(<line x1="50" y1="25" x2="50" y2="500" stroke="#000" strokeWidth="2" />);
-    // lines.push(<line x1="50" y1="500" x2="1050" y2="500" stroke="#000" strokeWidth="2" />);
+    for(let i=0; i<10; i++) {
+      y = 50 * ( i + 1 );
+      lines.push(<line key={y} x1="45" y1={y} x2="50" y2={y} stroke="#D3D3D3" strokeWidth="1" />);
+    }
 
+    lines.push(<line key="0" x1="50" y1="0" x2="50" y2="550" stroke="#000" strokeWidth="2" />);
+    lines.push(<line key="550" x1="50" y1="550" x2="1050" y2="550" stroke="#000" strokeWidth="2" />);
 
-    return (
-      <Fragment>
-        <line x1="50" y1="0" x2="50" y2="550" stroke="#000" strokeWidth="2" />
-        <line x1="50" y1="550" x2="1050" y2="550" stroke="#000" strokeWidth="2" />
-
-        <line x1="45" y1="550" x2="50" y2="550" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="500" x2="50" y2="500" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="450" x2="50" y2="450" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="400" x2="50" y2="400" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="350" x2="50" y2="350" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="300" x2="50" y2="300" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="250" x2="50" y2="250" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="200" x2="50" y2="200" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="150" x2="50" y2="150" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="100" x2="50" y2="100" stroke="#D3D3D3" strokeWidth="1" />
-        <line x1="45" y1="50" x2="50" y2="50" stroke="#D3D3D3" strokeWidth="1" />
-      </Fragment>
-    );
+    return lines;
   }
 
   renderVerticalLines(count) {
@@ -37,8 +24,6 @@ class DailyChart extends Component {
 
     for(let i=0; i<count; i++) {
       x = 10 * (i + 1) + 50;
-
-      // console.log('renderVerticalLines | x = ', x);
       lines.push(<line key={i} x1={x} y1="0" x2={x} y2="550" stroke="#D3D3D3" strokeWidth="1" />);
     }
 
@@ -56,7 +41,7 @@ class DailyChart extends Component {
     for(let i=1; i<10; i++) {
       yMarks.push(<text key={i} x="0" y={50*(i+1)} stroke="#A9A9A9" fontSize="10">{highestY - (gap * i)}</text>);
     }
-
+    
     return yMarks;
   }
 
@@ -66,12 +51,7 @@ class DailyChart extends Component {
     let color = '';
 
     const ohlcs = [];
-    let x = 0;
-    let y = 0;
-    let openY = 0;
-    let closeY = 0;
-    let lowY = 0;
-    let highY = 0;
+    let x, y, openY, closeY, lowY, highY = 0;
     const pixelPerNumber = 500 / ( highestY - lowestY );
 
     for(let i=0; i<dailyDataArr.length; i++) {

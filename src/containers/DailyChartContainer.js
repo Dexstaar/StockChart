@@ -22,6 +22,8 @@ class DailyChartContainer extends Component {
   render() {
     const { dailyData } = this.props;
 
+    console.log('DailyChartContainer : ', dailyData);
+
     if (!dailyData) {
       return 'Loading...';
     }

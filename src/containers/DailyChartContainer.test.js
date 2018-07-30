@@ -6,13 +6,19 @@ import reduxThunk from 'redux-thunk';
 
 import DailyChartContainer from './DailyChartContainer';
 import rootReducer from '../reducers';
+import { dailyMockData } from '../data/fixtures';
 
 describe('DailyChartContainer Test', () => {
   let renderedDOM = null;
 
 	it('renders correctly', () => {
-    // renderedDOM = shallow(<DailyChartContainer  />);
     const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+
+    const props = {
+      dailyData: {aaa:'bbb'}
+    };
+
+    console.log('DailyChartContainer Test | props : ', props );
 
 		renderedDOM = mount(
 		  <Provider store={createStoreWithMiddleware(
@@ -20,7 +26,7 @@ describe('DailyChartContainer Test', () => {
         window.__REDUX_DEVTOOLS_EXTENSION__ &&
         window.__REDUX_DEVTOOLS_EXTENSION__()
       )}>
-			  <DailyChartContainer />
+			  <DailyChartContainer {...props} />
       </Provider>
     );
 		

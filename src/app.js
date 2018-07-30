@@ -33,6 +33,7 @@ const MenuPlaceHolder = styled.div`
 
 const StyledMenu = styled(Menu)`
   float: left;
+  height: 600px;
 `;
 
 const StyledFooter = styled(Footer)`
