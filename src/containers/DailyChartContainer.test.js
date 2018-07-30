@@ -18,7 +18,7 @@ describe('DailyChartContainer Test', () => {
       dailyData: {aaa:'bbb'}
     };
 
-    console.log('DailyChartContainer Test | props : ', props );
+    // console.log('DailyChartContainer Test | props : ', props );
 
 		renderedDOM = mount(
 		  <Provider store={createStoreWithMiddleware(
@@ -33,6 +33,6 @@ describe('DailyChartContainer Test', () => {
   });
   
   it('shows the rendered DOM structure', () => {
-    console.log(renderedDOM.debug());
+    // console.log(renderedDOM.debug());
   });
 });

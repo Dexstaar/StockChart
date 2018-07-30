@@ -7,7 +7,7 @@ const url = 'https://www.alphavantage.co/query';
 const apiKey = '7KOGGEEMBWFT0JYP';
 
 export function fetchDaily(stockCode) {
-  console.log('fetchDaily | stockCode : ', stockCode);
+  // console.log('fetchDaily | stockCode : ', stockCode);
 
   const requestParams = {
     params: {

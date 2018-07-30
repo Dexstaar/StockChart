@@ -46,7 +46,7 @@ class DailyChart extends Component {
   }
 
   renderOHLC(dailyDataArr, highestY, lowestY) {
-    console.log('renderOHLC | dailyDataArr : ', dailyDataArr);
+    // console.log('renderOHLC | dailyDataArr : ', dailyDataArr);
 
     let color = '';
 

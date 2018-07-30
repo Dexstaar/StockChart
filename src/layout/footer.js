@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
   return (
     <PageFooter className={this.props.className}>
-      Footer
+      Copyright © Jeonghoon Kim
     </PageFooter>);
   }
 }
@@ -16,6 +16,7 @@ const PageFooter = styled.div`
   background-color: #000000;
   padding: 10px 10px;
   color: white;
+  text-align: center;
 `;
 
 export default Footer;

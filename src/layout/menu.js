@@ -8,7 +8,6 @@ const SideNav = withRR4();
 
 class Menu extends Component {
   render() {
-    console.log('Menu | this.props : ', this.props.params);
     return (
       <div className={this.props.className} style={{background: '#2c3e50', color: '#FFF', width: 150}}> 
         <SideNav highlightColor='#FFF' highlightBgColor='#00bcd4' >       

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Spinner from "react-spinkit";
+import styled from "styled-components";
 
 import { fetchDaily } from '../actions';
 import DailyChart from '../components/DailyChart';
@@ -22,10 +24,10 @@ class DailyChartContainer extends Component {
   render() {
     const { dailyData } = this.props;
 
-    console.log('DailyChartContainer : ', dailyData);
+    // console.log('DailyChartContainer : ', dailyData);
 
     if (!dailyData) {
-      return 'Loading...';
+      return <StyledSpinner name="ball-spin-fade-loader" color="#00bcd4"/>;
     }
 
     return (
@@ -49,5 +51,10 @@ DailyChartContainer.propTypes = {
 DailyChartContainer.defaultProps = {
   stockCode: 'msft'
 };
+
+const StyledSpinner = styled(Spinner)`
+  margin-top: 300px;
+  margin-left: 500px;
+`;
 
 export default connect(mapStateToProps, {fetchDaily})(DailyChartContainer);
