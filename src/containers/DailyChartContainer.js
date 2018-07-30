@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 import { fetchDaily } from '../actions';
 import DailyChart from '../components/DailyChart';
+import { Alert } from 'reactstrap';
 
 export class DailyChartContainer extends Component {
 
@@ -22,9 +23,12 @@ export class DailyChartContainer extends Component {
   }
 
   render() {
-    const { dailyData } = this.props;
-
+    const { dailyData, apiLimitMsg } = this.props;
     // console.log('DailyChartContainer | dailyData : ', dailyData);
+
+    if(apiLimitMsg) {
+      return <Alert color="warning">{apiLimitMsg}</Alert>;
+    }
 
     if (!dailyData) {
       return <StyledSpinner name="ball-spin-fade-loader" color="#00bcd4"/>;
@@ -43,6 +47,7 @@ function mapStateToProps(state) {
 
   return {
     dailyData: state.daily.all['Time Series (Daily)'],
+    apiLimitMsg: state.daily.all.Information,
   };
 }
 

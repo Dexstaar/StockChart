@@ -33,13 +33,13 @@ class DailyChart extends Component {
   renderYMarks(highestY, lowestY) {
     const yMarks = [];
 
-    yMarks.push(<text key="10" x="0" y="50" stroke="#A9A9A9" fontSize="10">{highestY}</text> );
-    yMarks.push(<text key="0" x="0" y="550" stroke="#A9A9A9" fontSize="10">{lowestY}</text>);
+    yMarks.push(<text key="10" x="5" y="53" stroke="#A9A9A9" fontSize="10">${highestY}</text> );
+    yMarks.push(<text key="0" x="5" y="553" stroke="#A9A9A9" fontSize="10">${lowestY}</text>);
 
     const gap = (highestY - lowestY) / 10 ;
     
     for(let i=1; i<10; i++) {
-      yMarks.push(<text key={i} x="0" y={50*(i+1)} stroke="#A9A9A9" fontSize="10">{highestY - (gap * i)}</text>);
+      yMarks.push(<text key={i} x="5" y={50*(i+1)+3} stroke="#A9A9A9" fontSize="10">${highestY - (gap * i)}</text>);
     }
     
     return yMarks;
