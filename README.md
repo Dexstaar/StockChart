@@ -2,9 +2,6 @@
 
 This is an app to display daily OHLC Chart
 
-###Getting Started###
-
-There are two methods for getting started with this repo.
 
 #### How to install #####
 Checkout this repo, install dependencies with the following:

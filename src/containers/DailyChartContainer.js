@@ -24,7 +24,7 @@ class DailyChartContainer extends Component {
   render() {
     const { dailyData } = this.props;
 
-    // console.log('DailyChartContainer : ', dailyData);
+    console.log('DailyChartContainer | dailyData : ', dailyData);
 
     if (!dailyData) {
       return <StyledSpinner name="ball-spin-fade-loader" color="#00bcd4"/>;
@@ -39,6 +39,8 @@ class DailyChartContainer extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('mapStateToProps | state : ', state);
+
   return {
     dailyData: state.daily.all['Time Series (Daily)'],
   };
