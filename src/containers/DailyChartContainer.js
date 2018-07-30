@@ -29,7 +29,7 @@ class DailyChartContainer extends Component {
     return (
       <div>
         <div>
-            Stock Code : {this.props.stockCode}
+            Selected Stock : {this.props.stockCode}
         </div>
         <div>
             <DailyChart dailyData={dailyData} />

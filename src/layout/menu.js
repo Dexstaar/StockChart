@@ -26,6 +26,24 @@ class Menu extends Component {
             <Nav id='orcl'>
                 <NavText> ORCL </NavText>
             </Nav>
+            <Nav id='cmcsa'>
+                <NavText> CMCSA </NavText>
+            </Nav>
+            <Nav id='goog'>
+                <NavText> GOOG </NavText>
+            </Nav>
+            <Nav id='luv'>
+                <NavText> LUV </NavText>
+            </Nav>
+            <Nav id='hog'>
+                <NavText> HOG </NavText>
+            </Nav>
+            <Nav id='googl'>
+                <NavText> GOOGL </NavText>
+            </Nav>
+            <Nav id='amzn'>
+                <NavText> AMZN </NavText>
+            </Nav>
         </SideNav>
     </div>
     );
