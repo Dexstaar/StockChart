@@ -6,7 +6,8 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 class Header extends Component {
   render() {
     return (
-      <PageHeader><h1>Daily OHLC Chart</h1></PageHeader>
+      // <PageHeader><h1>Daily OHLC Chart</h1></PageHeader>
+      <PageHeader><h1>a</h1></PageHeader>
     );
   }
 }

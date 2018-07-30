@@ -6,7 +6,21 @@
   "repository": "git@github.com:Dexstaar/StockChart.git",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "./jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss|png)$": "identity-obj-proxy"
+    },
+    "verbose": true,
+    "testURL": "http://localhost/"
   },
   "author": "Jeonghoon Kim",
   "license": "ISC",
@@ -29,6 +43,10 @@
     "autoprefixer": "^9.0.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.4.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "postcss-loader": "^2.1.6",
