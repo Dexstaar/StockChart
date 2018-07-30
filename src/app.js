@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <MainPlaceHolder>
         <Header />
-        <StyledMenu />
+        <StyledMenu/>
         <Switch>
           <Route exact path="/" component={MainContainer} />
           <Route path="/:code" component={MainContainer} />
