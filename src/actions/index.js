@@ -20,9 +20,7 @@ export function fetchDaily(stockCode) {
   const request = axios.get(url, requestParams);
 
   return (dispatch) => {
-    request.then(({
-      data,
-    }) => {
+    request.then(({ data }) => {
       dispatch({
         type: FETCH_DAILY,
         payload: data,

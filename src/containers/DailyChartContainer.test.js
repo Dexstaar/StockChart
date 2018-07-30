@@ -1,59 +1,49 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import reduxThunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
+import { createStore, combineReducers } from 'redux';
 
-import DailyChartContainer from './DailyChartContainer';
-import rootReducer from '../reducers';
-import { daily, dailyMockData } from '../data/fixtures';
+import {DailyChartContainer} from './DailyChartContainer';
+import DailyReducer from '../reducers/reducer_daily';
+import { dailyDataMock } from '../data/fixtures';
 
-describe('DailyChartContainer Test', () => {
-  let renderedDOM = null;
+let renderedDOM = null;
+const store = createStore(combineReducers({ daily: DailyReducer }));
+let props = {};
 
+describe('DailyChartContainer Loader Test', () => {
 	it('renders correctly', () => {
-    const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-    // const mockStore = configureMockStore();
-
-    // let store = mockStore({
-    //   dadailyMockDataily
-    // });
-
-    let mockReducer = daily;
-
-    
-
-    let store = createStore(combineReducers({ rootReducer }));
-
-    const props = {
-      dailyData: dailyMockData
+    props = {
+      fetchDaily: fn => fn
     };
-
-    // console.log('DailyChartContainer Test | props : ', props );
-
-
+    
     renderedDOM = mount(
       <Provider store={store}>
-        <DailyChartContainer {...props} />
+			  <DailyChartContainer {...props} />
       </Provider>
     );
-
-    
-
-		// renderedDOM = mount(
-    //   <Provider store={createStoreWithMiddleware(
-    //     rootReducer,
-    //     window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    //     window.__REDUX_DEVTOOLS_EXTENSION__()
-    //   )}>
-		// 	  <DailyChartContainer {...props} />
-    //   </Provider>
-    // );
-		
   });
   
-  it('shows the rendered DOM structure', () => {
-    console.log(renderedDOM.debug());
+  it('shows Loader component when no dailyData in props', () => {
+    expect(renderedDOM.find('Spinner').exists()).toBe(true);
   });
+});
+
+describe('DailyChartContainer Graph Test', () => {
+	it('renders correctly', () => {
+    let props = {
+      dailyData: dailyDataMock,
+      fetchDaily: fn => fn
+    };
+    
+    renderedDOM = mount(
+      <Provider store={store}>
+			  <DailyChartContainer {...props} />
+      </Provider>
+    );
+  });
+  
+  // it('shows the rendered DOM structure', () => {
+  //   console.log(renderedDOM.debug());
+  // });
 });

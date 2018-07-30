@@ -39,5 +39,3 @@ const StyledMenu = styled(Menu)`
 const StyledFooter = styled(Footer)`
   clear: both;
 `;
-
-

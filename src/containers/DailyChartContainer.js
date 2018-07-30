@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { fetchDaily } from '../actions';
 import DailyChart from '../components/DailyChart';
 
-class DailyChartContainer extends Component {
+export class DailyChartContainer extends Component {
 
   componentDidMount() {
     this.props.fetchDaily(this.props.stockCode);
@@ -24,7 +24,7 @@ class DailyChartContainer extends Component {
   render() {
     const { dailyData } = this.props;
 
-    console.log('DailyChartContainer | dailyData : ', dailyData);
+    // console.log('DailyChartContainer | dailyData : ', dailyData);
 
     if (!dailyData) {
       return <StyledSpinner name="ball-spin-fade-loader" color="#00bcd4"/>;
