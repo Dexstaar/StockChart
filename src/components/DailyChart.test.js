@@ -18,10 +18,6 @@ describe('DailyChart Test', () => {
 	    <DailyChart {...props} />
     );
   });
-  
-  it('shows the rendered DOM structure', () => {
-    // console.log(renderedDOM.debug());
-  });
 
   it('shows proper y marks in the graph', () => {
     expect(renderedDOM.find('text').at(0).props().y).toEqual("53");
