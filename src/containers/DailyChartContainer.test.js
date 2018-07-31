@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
@@ -29,6 +29,60 @@ describe('DailyChartContainer Loader Test', () => {
   });
 });
 
+describe('DailyChartContainer Error Message Test', () => {
+  const errorMsgMock = 'mock error msg';
+
+	it('renders correctly', () => {
+    props = {
+      errorMsg: errorMsgMock,
+      fetchDaily: fn => fn
+    };
+    
+    renderedDOM = mount(
+      <Provider store={store}>
+			  <DailyChartContainer {...props} />
+      </Provider>
+    );
+  });
+  
+  it('shows the error message when errorMsg in props', () => {
+    expect(renderedDOM.find('div').at(0).props().className).toEqual("alert alert-danger fade");
+    expect(renderedDOM.find('div').at(0).props().children[1]).toEqual(errorMsgMock);
+  });
+
+  it('doesnt show loader and graphes', () => {
+    expect(renderedDOM.find('Spinner').exists()).toBe(false);
+    expect(renderedDOM.find('svg').exists()).toBe(false);
+  });
+});
+
+describe('DailyChartContainer API Call Limit Message Test', () => {
+  const apiLimitMsgMock = 'api limit msg';
+
+	it('renders correctly', () => {
+    props = {
+      apiLimitMsg: apiLimitMsgMock,
+      fetchDaily: fn => fn
+    };
+    
+    renderedDOM = mount(
+      <Provider store={store}>
+			  <DailyChartContainer {...props} />
+      </Provider>
+    );
+  });
+
+  it('shows the api limit message when apiLimitMsg in props', () => {
+    expect(renderedDOM.find('div').at(0).props().className).toEqual("alert alert-warning fade");
+    expect(renderedDOM.find('div').at(0).props().children[1]).toEqual(apiLimitMsgMock);
+  });
+
+  it('doesnt show loader and graphes', () => {
+    expect(renderedDOM.find('Spinner').exists()).toBe(false);
+    expect(renderedDOM.find('svg').exists()).toBe(false);
+  });
+});
+
 describe('DailyChartContainer Graph Test', () => {
 	it('renders correctly', () => {
     let props = {
@@ -42,8 +96,13 @@ describe('DailyChartContainer Graph Test', () => {
       </Provider>
     );
   });
-  
-  // it('shows the rendered DOM structure', () => {
-  //   console.log(renderedDOM.debug());
-  // });
+
+  it('shows DailyChart component', () => {
+    expect(renderedDOM.find('DailyChart').exists()).toBe(true);
+    expect(renderedDOM.find('DailyChart').props().dailyData).toEqual(dailyDataMock);
+  });
+
+  it('doesnt show loader', () => {
+    expect(renderedDOM.find('Spinner').exists()).toBe(false);
+  });
 });
