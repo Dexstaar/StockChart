@@ -8,6 +8,7 @@ Checkout this repo, install dependencies with the following:
 
 ```
 	> git clone https://github.com/Dexstaar/StockChart.git
+	> cd StockChart
 	> npm install
 	> npm start
 ```
