@@ -27,3 +27,27 @@ Start the Jest process with the following:
 ```
 	> npm test
 ```
+
+
+#### How to build #####
+Please be aware of that it requires the following routing path after deployment.
+
+Build the app for production environment:
+
+```
+	> npm run build
+```
+
+
+#### How to access #####
+Please be aware of that it requires the following routing path to view the chart after deployment.
+
+[Development]
+```
+	> http://localhost:8080/
+```
+
+[Production]
+```
+	> http://domain/
+```

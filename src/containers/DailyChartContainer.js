@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'reactstrap';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Button } from "reactstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Spinner from "react-spinkit";
 import styled from "styled-components";
 
-import { fetchDaily } from '../actions';
-import DailyChart from '../components/DailyChart';
-import { Alert } from 'reactstrap';
+import { fetchDaily } from "../actions";
+import DailyChart from "../components/DailyChart";
+import { Alert } from "reactstrap";
 
 export class DailyChartContainer extends Component {
-
   componentDidMount() {
     this.props.fetchDaily(this.props.stockCode);
   }
@@ -26,12 +25,12 @@ export class DailyChartContainer extends Component {
     const { dailyData, apiLimitMsg } = this.props;
     // console.log('DailyChartContainer | dailyData : ', dailyData);
 
-    if(apiLimitMsg) {
+    if (apiLimitMsg) {
       return <Alert color="warning">{apiLimitMsg}</Alert>;
     }
 
     if (!dailyData) {
-      return <StyledSpinner name="ball-spin-fade-loader" color="#00bcd4"/>;
+      return <StyledSpinner name="ball-spin-fade-loader" color="#00bcd4" />;
     }
 
     return (
@@ -43,11 +42,11 @@ export class DailyChartContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('mapStateToProps | state : ', state);
+  console.log("mapStateToProps | state : ", state);
 
   return {
-    dailyData: state.daily.all['Time Series (Daily)'],
-    apiLimitMsg: state.daily.all.Information,
+    dailyData: state.daily.all["Time Series (Daily)"],
+    apiLimitMsg: state.daily.all.Information
   };
 }
 
@@ -56,7 +55,7 @@ DailyChartContainer.propTypes = {
 };
 
 DailyChartContainer.defaultProps = {
-  stockCode: 'msft'
+  stockCode: "msft"
 };
 
 const StyledSpinner = styled(Spinner)`
@@ -64,4 +63,7 @@ const StyledSpinner = styled(Spinner)`
   margin-left: 500px;
 `;
 
-export default connect(mapStateToProps, {fetchDaily})(DailyChartContainer);
+export default connect(
+  mapStateToProps,
+  { fetchDaily }
+)(DailyChartContainer);
