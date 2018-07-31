@@ -22,11 +22,15 @@ export class DailyChartContainer extends Component {
   }
 
   render() {
-    const { dailyData, apiLimitMsg } = this.props;
+    const { dailyData, apiLimitMsg, errorMsg } = this.props;
     // console.log('DailyChartContainer | dailyData : ', dailyData);
 
     if (apiLimitMsg) {
       return <Alert color="warning">{apiLimitMsg}</Alert>;
+    }
+
+    if (errorMsg) {
+      return <Alert color="danger">{errorMsg}</Alert>;
     }
 
     if (!dailyData) {
@@ -42,11 +46,10 @@ export class DailyChartContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("mapStateToProps | state : ", state);
-
   return {
     dailyData: state.daily.all["Time Series (Daily)"],
-    apiLimitMsg: state.daily.all.Information
+    apiLimitMsg: state.daily.all.Information,
+    errorMsg: state.daily.all["Error Message"]
   };
 }
 
